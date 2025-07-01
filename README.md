@@ -1,16 +1,44 @@
-# cgpa
+# 🎓 GPA & CGPA Calculator App (Flutter)
 
-A new Flutter project.
+A modern, offline GPA & CGPA calculator built using Flutter.  
+Easily calculate your GPA, track CGPA across semesters, visualize your GPA trend, and plan your academic goals — all in one app!
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Features
 
-A few resources to get you started if this is your first Flutter project:
+- ✅ **GPA Calculator** — Grade + credit-based GPA calculation
+- ✅ **CGPA Calculator** — Multi-semester CGPA computation
+- ✅ **Target GPA Predictor** — Know what GPA you need to reach your desired CGPA
+- 📈 **GPA Trend Graph** — Visualize GPA over semesters (offline)
+- 🌗 **Dark Mode UI** — Futuristic dark theme with Orbitron font
+- 💾 **Offline Support** — Data stored locally using Hive
+- 📱 **Beautiful UI** — Material 3 + animations + Orbitron typography
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📸 Screenshots
+
+> *(Add screenshots here later for GPA Calculator, CGPA Calculator, Trend Graph, etc.)*
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer        | Tech             |
+|--------------|------------------|
+| Frontend     | Flutter 3.x      |
+| Local Storage| Hive             |
+| Charts       | fl_chart         |
+| Fonts        | Google Fonts (Orbitron) |
+| Icons        | flutter_launcher_icons |
+| Splash       | flutter_native_splash  |
+
+---
+
+## 📦 Setup Instructions
+
+1. **Clone the repo**
+   ```bash
+   git clone https://github.com/yourusername/gpa-cgpa-calculator.git
+   cd gpa-cgpa-calculator
