@@ -12,12 +12,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final List<Map<String, dynamic>> subjects = [];
   double gpa = 0.0;
-
   final subjectController = TextEditingController();
 
   void addSubject() {
     if (subjectController.text.isEmpty) return;
-
     setState(() {
       subjects.add({
         'name': subjectController.text,
@@ -79,6 +77,8 @@ class _HomeScreenState extends State<HomeScreen> {
               decoration: InputDecoration(
                 labelText: 'Subject Name',
                 labelStyle: GoogleFonts.orbitron(),
+                filled: true,
+                fillColor: isDark ? Colors.grey[900] : Colors.grey[200],
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -93,7 +93,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     icon: const Icon(Icons.add),
                     label: Text('Add Subject', style: GoogleFonts.orbitron()),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.deepPurple,
+                      backgroundColor: const Color(0xFF00B4DB),
+                      foregroundColor: Colors.white,
                       padding: const EdgeInsets.symmetric(vertical: 16),
                       textStyle: const TextStyle(fontSize: 16),
                       shape: RoundedRectangleBorder(
@@ -112,7 +113,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       ? Center(
                         child: Text(
                           'No subjects added',
-                          style: GoogleFonts.orbitron(fontSize: 18),
+                          style: GoogleFonts.orbitron(
+                            fontSize: 18,
+                            color: Colors.grey,
+                          ),
                         ),
                       )
                       : ListView.builder(
@@ -125,20 +129,17 @@ class _HomeScreenState extends State<HomeScreen> {
                             margin: const EdgeInsets.symmetric(vertical: 6),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(16),
+                              color:
+                                  isDark
+                                      ? const Color(0xFF112D4E)
+                                      : Colors.blue.shade50,
                               boxShadow: [
                                 BoxShadow(
-                                  color:
-                                      isDark
-                                          ? Colors.black.withOpacity(0.4)
-                                          : Colors.grey.withOpacity(0.3),
-                                  blurRadius: 6,
+                                  color: Colors.black.withOpacity(0.2),
+                                  blurRadius: 8,
                                   offset: const Offset(0, 4),
                                 ),
                               ],
-                              color:
-                                  isDark
-                                      ? Colors.grey[900]
-                                      : Colors.deepPurple.shade50,
                             ),
                             child: ListTile(
                               title: Text(
@@ -153,20 +154,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                   DropdownButton<String>(
                                     value: subject['grade'],
-                                    dropdownColor:
-                                        isDark
-                                            ? Colors.grey[850]
-                                            : Colors.white,
-                                    style: GoogleFonts.orbitron(),
+                                    dropdownColor: Colors.grey[850],
+                                    style: GoogleFonts.orbitron(
+                                      color: Colors.white,
+                                    ),
                                     items:
-                                        gradeList
-                                            .map(
-                                              (grade) => DropdownMenuItem(
-                                                value: grade,
-                                                child: Text(grade),
-                                              ),
-                                            )
-                                            .toList(),
+                                        gradeList.map((grade) {
+                                          return DropdownMenuItem(
+                                            value: grade,
+                                            child: Text(grade),
+                                          );
+                                        }).toList(),
                                     onChanged: (val) {
                                       setState(() {
                                         subject['grade'] = val!;
@@ -180,11 +178,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                   DropdownButton<double>(
                                     value: subject['credits'],
-                                    dropdownColor:
-                                        isDark
-                                            ? Colors.grey[850]
-                                            : Colors.white,
-                                    style: GoogleFonts.orbitron(),
+                                    dropdownColor: Colors.grey[850],
+                                    style: GoogleFonts.orbitron(
+                                      color: Colors.white,
+                                    ),
                                     items:
                                         [1.0, 1.5, 2.0, 3.0, 4.0, 5.0, 20.0]
                                             .map(
@@ -227,7 +224,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: GoogleFonts.orbitron(fontSize: 18),
               ),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
+                backgroundColor: const Color(0xFF00C9A7),
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -241,7 +238,7 @@ class _HomeScreenState extends State<HomeScreen> {
               style: GoogleFonts.orbitron(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
-                color: Colors.amber,
+                color: Colors.cyanAccent,
               ),
             ),
           ],

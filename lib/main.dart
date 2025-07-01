@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'screens/home_screen.dart';
 import 'screens/semester_screen.dart';
-import 'screens/target_gpa_screen.dart'; // ✅ import new screen
+import 'screens/target_gpa_screen.dart';
+import 'widgets/animated_card.dart'; // ✅ import AnimatedCard
 
 void main() {
   runApp(const GPAApp());
@@ -18,20 +19,22 @@ class GPAApp extends StatelessWidget {
       themeMode: ThemeMode.dark,
       theme: ThemeData(
         useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.cyan),
         textTheme: GoogleFonts.orbitronTextTheme(),
       ),
       darkTheme: ThemeData(
         useMaterial3: true,
         brightness: Brightness.dark,
-        scaffoldBackgroundColor: Colors.black,
+        scaffoldBackgroundColor: const Color(0xFF0A0F1C),
         textTheme: GoogleFonts.orbitronTextTheme(ThemeData.dark().textTheme),
         appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.indigo,
+          backgroundColor: Color(0xFF112B3C),
           foregroundColor: Colors.white,
+          centerTitle: true,
+          elevation: 0,
         ),
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.indigo,
+          seedColor: Colors.cyanAccent,
           brightness: Brightness.dark,
         ),
       ),
@@ -48,16 +51,19 @@ class HomeMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("FUTURE DECIDER :)", style: GoogleFonts.orbitron()),
-        centerTitle: true,
+        title: Text(
+          "🚀 FUTURE DECIDER",
+          style: GoogleFonts.orbitron(fontSize: 20),
+        ),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: ListView(
           children: [
-            AnimatedButton(
-              icon: Icons.calculate,
-              label: "GPA Calculator",
+            AnimatedCard(
+              icon: Icons.calculate_outlined,
+              title: "GPA Calculator",
+              subtitle: "Semester-wise GPA with grades & credits",
               onTap:
                   () => Navigator.push(
                     context,
@@ -65,9 +71,10 @@ class HomeMenu extends StatelessWidget {
                   ),
             ),
             const SizedBox(height: 24),
-            AnimatedButton(
-              icon: Icons.school,
-              label: "CGPA Calculator",
+            AnimatedCard(
+              icon: Icons.school_outlined,
+              title: "CGPA Calculator",
+              subtitle: "Calculate cumulative CGPA",
               onTap:
                   () => Navigator.push(
                     context,
@@ -75,9 +82,10 @@ class HomeMenu extends StatelessWidget {
                   ),
             ),
             const SizedBox(height: 24),
-            AnimatedButton(
-              icon: Icons.trending_up,
-              label: "Target GPA Calculator", // ✅ New button
+            AnimatedCard(
+              icon: Icons.trending_up_outlined,
+              title: "Target GPA Predictor",
+              subtitle: "Find GPA needed for your dream CGPA",
               onTap:
                   () => Navigator.push(
                     context,
@@ -86,36 +94,6 @@ class HomeMenu extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class AnimatedButton extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final VoidCallback onTap;
-
-  const AnimatedButton({
-    super.key,
-    required this.icon,
-    required this.label,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton.icon(
-      onPressed: onTap,
-      icon: Icon(icon, size: 26),
-      label: Text(label, style: GoogleFonts.orbitron(fontSize: 18)),
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.deepPurple,
-        foregroundColor: Colors.white,
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-        elevation: 10,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        textStyle: const TextStyle(fontWeight: FontWeight.bold),
       ),
     );
   }

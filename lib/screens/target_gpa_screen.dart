@@ -92,21 +92,25 @@ class _TargetGPAScreenState extends State<TargetGPAScreen> {
             buildInputField(
               controller: currentCGPAController,
               label: 'Current CGPA',
+              isDark: isDark,
             ),
             const SizedBox(height: 12),
             buildInputField(
               controller: totalCreditsController,
               label: 'Total Credits Completed',
+              isDark: isDark,
             ),
             const SizedBox(height: 12),
             buildInputField(
               controller: desiredCGPAController,
               label: 'Desired CGPA',
+              isDark: isDark,
             ),
             const SizedBox(height: 12),
             buildInputField(
               controller: upcomingCreditsController,
               label: 'Upcoming Semester Credits',
+              isDark: isDark,
             ),
             const SizedBox(height: 20),
             ElevatedButton.icon(
@@ -117,7 +121,7 @@ class _TargetGPAScreenState extends State<TargetGPAScreen> {
                 style: GoogleFonts.orbitron(fontSize: 16),
               ),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.deepPurple,
+                backgroundColor: const Color(0xFF00B4DB),
                 foregroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(vertical: 14),
                 shape: RoundedRectangleBorder(
@@ -152,6 +156,7 @@ class _TargetGPAScreenState extends State<TargetGPAScreen> {
   Widget buildInputField({
     required TextEditingController controller,
     required String label,
+    required bool isDark,
   }) {
     return TextField(
       controller: controller,
@@ -160,6 +165,8 @@ class _TargetGPAScreenState extends State<TargetGPAScreen> {
       decoration: InputDecoration(
         labelText: label,
         labelStyle: GoogleFonts.orbitron(),
+        filled: true,
+        fillColor: isDark ? Colors.grey[900] : Colors.grey[100],
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
       ),
     );

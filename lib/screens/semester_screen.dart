@@ -10,7 +10,6 @@ class SemesterScreen extends StatefulWidget {
 
 class _SemesterScreenState extends State<SemesterScreen> {
   final List<Map<String, dynamic>> semesters = [];
-
   final gpaController = TextEditingController();
   final creditController = TextEditingController();
 
@@ -72,11 +71,13 @@ class _SemesterScreenState extends State<SemesterScreen> {
           children: [
             TextField(
               controller: gpaController,
-              keyboardType: TextInputType.number,
+              keyboardType: TextInputType.numberWithOptions(decimal: true),
               style: GoogleFonts.orbitron(),
               decoration: InputDecoration(
                 labelText: 'Semester GPA',
                 labelStyle: GoogleFonts.orbitron(),
+                filled: true,
+                fillColor: isDark ? Colors.grey[900] : Colors.grey[100],
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -85,11 +86,13 @@ class _SemesterScreenState extends State<SemesterScreen> {
             const SizedBox(height: 10),
             TextField(
               controller: creditController,
-              keyboardType: TextInputType.number,
+              keyboardType: TextInputType.numberWithOptions(decimal: true),
               style: GoogleFonts.orbitron(),
               decoration: InputDecoration(
                 labelText: 'Credits for Semester',
                 labelStyle: GoogleFonts.orbitron(),
+                filled: true,
+                fillColor: isDark ? Colors.grey[900] : Colors.grey[100],
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -101,7 +104,7 @@ class _SemesterScreenState extends State<SemesterScreen> {
               icon: const Icon(Icons.add),
               label: Text('Add Semester', style: GoogleFonts.orbitron()),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.deepPurple,
+                backgroundColor: const Color(0xFF00B4DB),
                 foregroundColor: Colors.white,
                 padding: const EdgeInsets.symmetric(vertical: 14),
                 shape: RoundedRectangleBorder(
@@ -117,7 +120,10 @@ class _SemesterScreenState extends State<SemesterScreen> {
                       ? Center(
                         child: Text(
                           'No semesters added',
-                          style: GoogleFonts.orbitron(fontSize: 18),
+                          style: GoogleFonts.orbitron(
+                            fontSize: 18,
+                            color: Colors.grey,
+                          ),
                         ),
                       )
                       : ListView.builder(
@@ -131,8 +137,8 @@ class _SemesterScreenState extends State<SemesterScreen> {
                               borderRadius: BorderRadius.circular(14),
                               color:
                                   isDark
-                                      ? Colors.grey[900]
-                                      : Colors.deepPurple.shade50,
+                                      ? const Color(0xFF112D4E)
+                                      : Colors.blue.shade50,
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.2),
@@ -143,10 +149,10 @@ class _SemesterScreenState extends State<SemesterScreen> {
                             ),
                             child: ListTile(
                               leading: CircleAvatar(
-                                backgroundColor: Colors.deepPurple,
+                                backgroundColor: const Color(0xFF00C9A7),
                                 child: Text(
                                   '${index + 1}',
-                                  style: const TextStyle(color: Colors.white),
+                                  style: const TextStyle(color: Colors.black),
                                 ),
                               ),
                               title: Text(
@@ -182,7 +188,7 @@ class _SemesterScreenState extends State<SemesterScreen> {
                 style: GoogleFonts.orbitron(fontSize: 18),
               ),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
+                backgroundColor: const Color(0xFF00C9A7),
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
@@ -196,7 +202,7 @@ class _SemesterScreenState extends State<SemesterScreen> {
               style: GoogleFonts.orbitron(
                 fontSize: 22,
                 fontWeight: FontWeight.bold,
-                color: Colors.amber,
+                color: Colors.cyanAccent,
               ),
             ),
           ],
